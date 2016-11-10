@@ -46,9 +46,9 @@ augroup endwise " {{{1
         \ let b:endwise_words = 'fu,fun,func,function,wh,while,if,for,try,au,augroup' |
         \ let b:endwise_syngroups = 'vimFuncKey,vimNotFunc,vimCommand,vimAugroupKey'
   autocmd FileType c,cpp,xdefaults,haskell
-        \ let b:endwise_addition = '#endif' |
+        \ let b:endwise_addition = '\="#endif \/*".substitute(submatch(0), "^\\s*\\S*\\s*", "", "")."*\/"' |
         \ let b:endwise_words = 'if,ifdef,ifndef' |
-        \ let b:endwise_pattern = '^\s*#\%(if\|ifdef\|ifndef\)\>' |
+        \ let b:endwise_pattern = '^\s*#\%(if\|ifdef\|ifndef\)\>\s\+\%(.*\)' |
         \ let b:endwise_syngroups = 'cPreCondit,cPreConditMatch,cCppInWrapper,xdefaultsPreProc'
   autocmd FileType objc
         \ let b:endwise_addition = '@end' |
